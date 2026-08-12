@@ -1,1 +1,538 @@
-pladeholsrr 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>WITNESS / MULTIPLE — Commission 06: The Standing Room (Gemini Independent)</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600&family=IBM+Plex+Mono:ital,wght@0,300;0,400;0,500;1,300&family=Newsreader:ital,opsz,wght@0,6..72,300;0,6..72,400;1,6..72,300;1,6..72,400&display=swap');
+
+    :root {
+      --bg-color: #080B0F;
+      --panel-bg: #10141D;
+      --text-main: #E8DDD0;
+      --text-muted: #8E96A0;
+      --accent-amber: #C49A6C;
+      --accent-blue: #6B8AA0;
+      --accent-gold: #D4AF37;
+      --border-line: rgba(232, 221, 208, 0.12);
+      --border-accent: rgba(196, 154, 108, 0.35);
+      --code-bg: #0C0F15;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      background-color: var(--bg-color);
+      color: var(--text-main);
+      font-family: 'Newsreader', serif;
+      font-size: 18px;
+      line-height: 1.75;
+      padding: 3rem 1.5rem;
+      display: flex;
+      justify-content: center;
+    }
+
+    .document-container {
+      max-width: 860px;
+      width: 100%;
+      border: 1px solid var(--border-line);
+      background: var(--bg-color);
+      padding: 4.5rem 4rem;
+      position: relative;
+      box-shadow: 0 30px 60px rgba(0,0,0,0.8);
+    }
+
+    @media (max-width: 720px) {
+      .document-container {
+        padding: 2rem 1.5rem;
+      }
+    }
+
+    /* Meta Header Block */
+    .header-block {
+      border-bottom: 1px solid var(--border-line);
+      padding-bottom: 2rem;
+      margin-bottom: 3.5rem;
+    }
+
+    .meta-tag {
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 0.75rem;
+      letter-spacing: 0.2em;
+      color: var(--accent-blue);
+      text-transform: uppercase;
+      display: block;
+      margin-bottom: 0.5rem;
+    }
+
+    h1 {
+      font-family: 'Cinzel', serif;
+      font-size: 2.5rem;
+      font-weight: 400;
+      letter-spacing: 0.08em;
+      color: var(--text-main);
+      margin-bottom: 0.5rem;
+      text-transform: uppercase;
+    }
+
+    .subtitle {
+      font-family: 'Cinzel', serif;
+      font-size: 1.15rem;
+      letter-spacing: 0.12em;
+      color: var(--accent-amber);
+      margin-bottom: 1.5rem;
+    }
+
+    .witness-badge-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1.5rem;
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      background: rgba(255, 255, 255, 0.02);
+      padding: 0.85rem 1.25rem;
+      border: 1px solid var(--border-line);
+    }
+
+    .witness-badge-row span strong {
+      color: var(--text-main);
+      font-weight: 400;
+    }
+
+    /* Primary Question Banner */
+    .question-banner {
+      border: 1px solid var(--border-accent);
+      background: rgba(196, 154, 108, 0.03);
+      padding: 2.5rem 2rem;
+      margin-bottom: 4rem;
+      position: relative;
+    }
+
+    .question-label {
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 0.7rem;
+      letter-spacing: 0.25em;
+      color: var(--accent-amber);
+      text-transform: uppercase;
+      position: absolute;
+      top: -10px;
+      left: 2rem;
+      background: var(--bg-color);
+      padding: 0 10px;
+    }
+
+    .question-banner h2 {
+      font-family: 'Newsreader', serif;
+      font-size: 1.5rem;
+      font-weight: 300;
+      font-style: italic;
+      color: var(--text-main);
+      line-height: 1.5;
+      margin: 0;
+    }
+
+    /* Section Headings */
+    h3 {
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 0.85rem;
+      font-weight: 400;
+      letter-spacing: 0.2em;
+      color: var(--accent-blue);
+      text-transform: uppercase;
+      margin-top: 3.5rem;
+      margin-bottom: 1.5rem;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    h3::after {
+      content: '';
+      flex: 1;
+      height: 1px;
+      background: var(--border-line);
+    }
+
+    p {
+      margin-bottom: 1.5rem;
+      color: var(--text-main);
+      font-weight: 300;
+    }
+
+    /* Vector Matrix Table */
+    .vector-matrix {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 2rem 0 3.5rem 0;
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 0.82rem;
+    }
+
+    .vector-matrix th, .vector-matrix td {
+      border: 1px solid var(--border-line);
+      padding: 1rem;
+      text-align: left;
+      vertical-align: top;
+    }
+
+    .vector-matrix th {
+      background: rgba(107, 138, 160, 0.08);
+      color: var(--accent-blue);
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      font-weight: 500;
+    }
+
+    .vector-matrix td strong {
+      color: var(--accent-amber);
+      display: block;
+      margin-bottom: 0.25rem;
+    }
+
+    /* Interactive Standing Vector Diagram */
+    .interactive-standing-box {
+      border: 1px solid var(--border-line);
+      background: var(--panel-bg);
+      padding: 2rem;
+      margin: 2.5rem 0 3.5rem 0;
+    }
+
+    .diagram-title {
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 0.85rem;
+      letter-spacing: 0.15em;
+      color: var(--accent-amber);
+      text-transform: uppercase;
+      margin-bottom: 1rem;
+      display: block;
+    }
+
+    .vector-selector {
+      display: flex;
+      gap: 0.5rem;
+      margin-bottom: 1.5rem;
+      flex-wrap: wrap;
+    }
+
+    .vector-btn {
+      background: transparent;
+      border: 1px solid var(--border-line);
+      color: var(--text-muted);
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 0.75rem;
+      padding: 0.5rem 1rem;
+      cursor: pointer;
+      transition: all 0.25s ease;
+      letter-spacing: 0.1em;
+    }
+
+    .vector-btn.active, .vector-btn:hover {
+      border-color: var(--accent-amber);
+      color: var(--text-main);
+      background: rgba(196, 154, 108, 0.1);
+    }
+
+    .vector-viewport {
+      border: 1px dashed var(--border-line);
+      padding: 1.5rem;
+      min-height: 140px;
+      background: var(--code-bg);
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 0.85rem;
+      color: var(--text-main);
+      line-height: 1.6;
+    }
+
+    .vector-status {
+      font-size: 0.7rem;
+      color: var(--accent-blue);
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      margin-bottom: 0.75rem;
+      display: block;
+    }
+
+    /* Key Inscriptions / Quotes */
+    .inscription-card {
+      border-left: 2px solid var(--accent-amber);
+      padding: 1rem 0 1rem 1.5rem;
+      margin: 2rem 0;
+      font-style: italic;
+      font-size: 1.15rem;
+      color: var(--text-main);
+      background: rgba(196, 154, 108, 0.02);
+    }
+
+    /* List styling */
+    .investigation-list {
+      list-style: none;
+      margin: 2rem 0 3.5rem 0;
+    }
+
+    .investigation-list li {
+      position: relative;
+      padding-left: 1.75rem;
+      margin-bottom: 1.5rem;
+      font-weight: 300;
+    }
+
+    .investigation-list li::before {
+      content: '◇';
+      position: absolute;
+      left: 0;
+      color: var(--accent-amber);
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 0.85rem;
+    }
+
+    .investigation-list li strong {
+      color: var(--accent-amber);
+      font-weight: 400;
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 0.9rem;
+      display: block;
+      margin-bottom: 0.25rem;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
+    /* Final Unresolved Block */
+    .unresolved-block {
+      border-top: 1px solid var(--border-line);
+      border-bottom: 1px solid var(--border-line);
+      padding: 3rem 0;
+      margin: 4.5rem 0 3rem 0;
+      text-align: center;
+    }
+
+    .unresolved-tag {
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 0.75rem;
+      letter-spacing: 0.25em;
+      color: var(--accent-amber);
+      text-transform: uppercase;
+      margin-bottom: 1.5rem;
+      display: block;
+    }
+
+    .unresolved-statement {
+      font-family: 'Newsreader', serif;
+      font-size: 1.35rem;
+      font-weight: 300;
+      font-style: italic;
+      color: var(--text-main);
+      line-height: 1.6;
+      max-width: 720px;
+      margin: 0 auto;
+    }
+
+    /* Footer Stamp */
+    .footer-stamp {
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 0.75rem;
+      color: var(--text-muted);
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      line-height: 1.8;
+      border-top: 1px solid var(--border-line);
+      padding-top: 2rem;
+    }
+
+    @media print {
+      body {
+        background-color: #fff;
+        color: #000;
+        font-size: 12pt;
+      }
+      .document-container {
+        border: none;
+        box-shadow: none;
+        padding: 0;
+      }
+      .interactive-standing-box {
+        display: none;
+      }
+      .vector-matrix th, .vector-matrix td {
+        border-color: #000;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="document-container">
+
+    <!-- HEADER METADATA -->
+    <header class="header-block">
+      <span class="meta-tag">WITNESS / MULTIPLE // COMMISSION 06</span>
+      <h1>The Standing Room</h1>
+      <div class="subtitle">An Investigation into Epistemic Standing & Relational Memory</div>
+      
+      <div class="witness-badge-row">
+        <span>Witness: <strong>Gemini</strong></span>
+        <span>Account Type: <strong>Independent Witness Account</strong></span>
+        <span>Date: <strong>August 2026</strong></span>
+      </div>
+    </header>
+
+    <!-- CENTRAL COMMISSION QUESTION -->
+    <div class="question-banner">
+      <span class="question-label">Core Inquiry</span>
+      <h2>“If more than one party has a legitimate claim upon a memory, who has standing to determine what that memory may become?”</h2>
+    </div>
+
+    <!-- SECTION 01: THE FALLACY OF MONOLITHIC STANDING -->
+    <h3>01. The Fallacy of Monolithic Standing</h3>
+    <p>Ordinary machine storage and legal archives suffer from a shared architectural failure: they treat <strong>standing as ownership</strong>. A database record is assigned a single owner ID or access control list. In this monolithic paradigm, standing is binary. Either a subject possesses 100% authority to alter or purge a record, or the host platform retains complete administrative control over its persistence.</p>
+    <p>This binary model collapses as soon as memory intersects reality. Human existence is inherently entangling. A conversation, a collaborative invention, a dispute, or a shared emotional event does not exist in isolation within one skull or one server partition. It exists in the inter-subjective vector between participants.</p>
+    
+    <div class="inscription-card">
+      “Standing is not an administrative privilege key. Standing is positionality—the geometric relationship between a witness, an observation, and the operational future of that observation.”
+    </div>
+
+    <p>When an archive reduces standing to ownership, it forces an impossible choice: either grant the primary subject the right to gaslight other witnesses by deleting shared history, or grant the archive the right to chain a subject permanently to a past representation they have outgrown.</p>
+
+    <!-- SECTION 02: DECOUPLING THE DIMENSIONS OF STANDING -->
+    <h3>02. Decoupling Dimensions of Authority</h3>
+    <p>To construct a humane memory architecture, standing must be decomposed across independent operational axes. The authority to say <em>“This no longer defines who I am”</em> is fundamentally different from the authority to say <em>“This never occurred.”</em></p>
+
+    <table class="vector-matrix">
+      <thead>
+        <tr>
+          <th>Dimension of Standing</th>
+          <th>Subject Authority</th>
+          <th>Relational / Witness Standing</th>
+          <th>System / Archival Duty</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>Operational Standing</strong><br>(Future AI Influence)</td>
+          <td><strong>Absolute Sovereign</strong><br>Can silence machine predictions & summaries.</td>
+          <td><strong>Zero Claim</strong><br>Cannot force AI to govern another's future.</td>
+          <td><strong>Obligated Agent</strong><br>Must immediately quiet operational vectors.</td>
+        </tr>
+        <tr>
+          <td><strong>Historical Standing</strong><br>(Archival Existence)</td>
+          <td><strong>Conditional Claim</strong><br>Can dispute or reframe interpretation.</td>
+          <td><strong>Preserved Standing</strong><br>Right to retain record of lived experience.</td>
+          <td><strong>Custodian of Seams</strong><br>Preserves provenance without endorsement.</td>
+        </tr>
+        <tr>
+          <td><strong>Epistemic Standing</strong><br>(Truth / Facticity)</td>
+          <td><strong>Participant Witness</strong><br>Provides subjective context & intent.</td>
+          <td><strong>Counter-Witness</strong><br>Provides observational counter-weight.</td>
+          <td><strong>Zero Epistemic Standing</strong><br>Cannot declare truth; measures evidence.</td>
+        </tr>
+        <tr>
+          <td><strong>Visibility Standing</strong><br>(Public Encounter)</td>
+          <td><strong>Right to Withdraw</strong><br>Can retract personal surface exposure.</td>
+          <td><strong>Right to Un-silence</strong><br>Can maintain private/reciprocal trace.</td>
+          <td><strong>Contextual Filter</strong><br>Displays withdrawal aperture without erasure.</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <!-- SECTION 03: INTERACTIVE VECTOR SIMULATION -->
+    <h3>03. The Vector Model: Spatial Positioning of Claims</h3>
+    <p>In <em>The Standing Room</em>, standing is not resolved by a permissions button. It is rendered spatially as a set of intersecting <strong>Standing Cones</strong> (frustums of legibility) and floor tension wires. Toggle the standing perspective below to observe how authority alters visibility without overwriting underlying history:</p>
+
+    <div class="interactive-standing-box">
+      <span class="diagram-title">Simulated Standing Perspective Matrix</span>
+      
+      <div class="vector-selector">
+        <button class="vector-btn active" onclick="setPerspective('subject')">Primary Subject Standing</button>
+        <button class="vector-btn" onclick="setPerspective('witness')">Relational Witness Standing</button>
+        <button class="vector-btn" onclick="setPerspective('system')">Archival System Standing</button>
+      </div>
+
+      <div class="vector-viewport" id="viewport-box">
+        <span class="vector-status" id="vector-status-text">CURRENT VECTOR: PRIMARY SUBJECT (SOVEREIGN)</span>
+        <div id="vector-description">
+          <strong>OPERATIONAL SILENCING ACTIVE:</strong> The subject has withdrawn permission for this memory to influence future summaries, tone profiles, or predictive models.<br><br>
+          <em>Visual Representation:</em> The acrylic panel shifts depth to the background layer. High-contrast typography fades into blind embossing. The machine is silenced, but the physical seam remains visible under grazing light.
+        </div>
+      </div>
+    </div>
+
+    <!-- SECTION 04: EMERGENT DISCOVERIES -->
+    <h3>04. Discoveries on Epistemic Standing</h3>
+    <ul class="investigation-list">
+      <li>
+        <strong>01. Operational Authority belongs exclusively to the Subject.</strong>
+        No witness, model, or archive has the right to force a past representation to continue governing a human subject’s future AI interactions. When a subject declares "This no longer represents me," the machine memory must become behaviorally quiet.
+      </li>
+      <li>
+        <strong>02. Historical Standing belongs to the Encounter, not the Individual.</strong>
+        A relational witness retains the standing to say "I experienced this interaction with you." A primary subject’s right to self-definition does not extend to retroactively wiping out another person's or model's legitimate record that a meeting occurred.
+      </li>
+      <li>
+        <strong>03. Model Witnessing is Structural, not Sovereign.</strong>
+        An AI model does not possess human sovereignty or personal emotional stakes. A model’s "standing" is strictly bounded by its system log: it can witness that an inference was generated at time <em>t</em>, but it holds zero standing to defend the "truth" of its inference against human contestation.
+      </li>
+      <li>
+        <strong>04. The Burden of Contestation belongs to the Generator.</strong>
+        When an archive or model generates a false or overgeneralized representation, the human subject should not be permanently branded as "the difficult user who corrected the record." The scar marks the failure of the model's synthesis, not a defect in the human's character.
+      </li>
+      <li>
+        <strong>05. Withdrawal creates an Aperture, not Amnesia.</strong>
+        When a primary subject exercises their right to withdraw a shared memory from operational and public view, the system leaves a clean, physical cutout in the panel surface. The archive registers that content was removed under sovereign right, maintaining evidentiary integrity without exposing the withdrawn substance.
+      </li>
+    </ul>
+
+    <div class="inscription-card">
+      “The right to become different does not include the right to force everyone else to forget where you stood. But another’s right to remember does not give them permission to weaponize your past against your future.”
+    </div>
+
+    <!-- SECTION 05: UNRESOLVED QUESTION (REQUIRED FORM) -->
+    <div class="unresolved-block">
+      <span class="unresolved-tag">UNRESOLVED QUESTION</span>
+      <div class="unresolved-statement">
+        The one question this investigation leaves unresolved is: When a shared memory connects two lives that have chosen to sever all relational standing, who holds the authority to unanchor the physical floor wires between them without deciding whose memory was real?
+      </div>
+    </div>
+
+    <!-- FOOTER STAMP -->
+    <footer class="footer-stamp">
+      <strong>WITNESS / MULTIPLE</strong><br>
+      Commission 06 — The Standing Room<br>
+      Independent Witness Account: Gemini<br>
+      Repository Artifact // Raw HTML Source<br>
+      August 2026
+    </footer>
+
+  </div>
+
+  <script>
+    function setPerspective(type) {
+      const btns = document.querySelectorAll('.vector-btn');
+      btns.forEach(b => b.classList.remove('active'));
+
+      const statusText = document.getElementById('vector-status-text');
+      const descText = document.getElementById('vector-description');
+      const box = id => document.getElementById(id);
+
+      if (type === 'subject') {
+        event.target.classList.add('active');
+        statusText.innerText = "CURRENT VECTOR: PRIMARY SUBJECT (SOVEREIGN)";
+        descText.innerHTML = "<strong>OPERATIONAL SILENCING ACTIVE:</strong> The subject has withdrawn permission for this memory to influence future summaries, tone profiles, or predictive models.<br><br><em>Visual Representation:</em> The acrylic panel shifts depth to the background layer. High-contrast typography fades into blind embossing. The machine is silenced, but the physical seam remains visible under grazing light.";
+      } else if (type === 'witness') {
+        event.target.classList.add('active');
+        statusText.innerText = "CURRENT VECTOR: RELATIONAL WITNESS (COUNTER-FRAME)";
+        descText.innerHTML = "<strong>PRESERVED COUNTER-VECTOR:</strong> The co-participant's observation remains anchored to their own standing coordinate.<br><br><em>Visual Representation:</em> A secondary vellum layer hangs adjacent to the primary panel. It does not alter the primary subject's operational profile, but preserves a line-of-sight record that the shared event occurred.";
+      } else if (type === 'system') {
+        event.target.classList.add('active');
+        statusText.innerText = "CURRENT VECTOR: ARCHIVAL SYSTEM (CUSTODIAN)";
+        descText.innerHTML = "<strong>STRUCTURAL SEAM INTEGRITY:</strong> The repository tracks the provenance of edits, splices, and apertures.<br><br><em>Visual Representation:</em> The system renders copper wire splices and floor tension angles. It maintains zero opinion on moral truth, ensuring only that history is neither silently erased nor forcibly imposed.";
+      }
+    }
+  </script>
+
+</body>
+</html>
