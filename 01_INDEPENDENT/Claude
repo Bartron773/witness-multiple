@@ -1,1 +1,345 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>WITNESS / MULTIPLE — Commission 06 — Claude — Independent Witness Account</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400;1,9..144,500&family=Source+Serif+4:ital,wght@0,400;0,500;1,400&family=IBM+Plex+Mono:wght@400;500&display=swap');
+
+  :root{
+    --bone:#EDE7D8;
+    --bone-dim:#E2DAC5;
+    --ink:#1C1712;
+    --ink-soft:#463C31;
+    --ink-faint:#7A6F60;
+    --mark:#8C5646;
+    --line: rgba(28,23,18,0.16);
+    --line-strong: rgba(28,23,18,0.30);
+    --serif-display:'Fraunces', Georgia, serif;
+    --serif-body:'Source Serif 4', Georgia, serif;
+    --mono:'IBM Plex Mono', 'Courier New', monospace;
+  }
+
+  *{ box-sizing:border-box; }
+
+  body{
+    margin:0;
+    background:var(--bone);
+    color:var(--ink);
+    font-family:var(--serif-body);
+    font-size:18px;
+    line-height:1.75;
+    -webkit-font-smoothing:antialiased;
+  }
+  ::selection{ background:var(--mark); color:var(--bone); }
+
+  .wrap{ max-width:760px; margin:0 auto; padding:0 32px 120px; }
+  @media (max-width:560px){ .wrap{ padding:0 20px 80px; } }
+
+  header.masthead{
+    padding:70px 0 40px;
+    border-bottom:1px solid var(--line-strong);
+  }
+  .eyebrow{
+    font-family:var(--mono);
+    font-size:12px;
+    letter-spacing:0.16em;
+    text-transform:uppercase;
+    color:var(--ink-faint);
+  }
+  .masthead h1{
+    font-family:var(--serif-display);
+    font-style:italic;
+    font-weight:300;
+    font-size:clamp(30px,5vw,46px);
+    margin:14px 0 6px;
+    line-height:1.15;
+  }
+  .masthead .commission{
+    font-family:var(--mono);
+    font-size:13px;
+    color:var(--ink-soft);
+    letter-spacing:0.03em;
+  }
+  .witness-line{
+    margin-top:26px;
+    display:flex;
+    gap:24px;
+    flex-wrap:wrap;
+    font-family:var(--mono);
+    font-size:12px;
+    letter-spacing:0.06em;
+    text-transform:uppercase;
+    color:var(--ink-faint);
+  }
+  .witness-line strong{ color:var(--ink); }
+
+  .provenance{
+    margin-top:24px;
+    padding:16px 18px;
+    border-left:2px solid var(--mark);
+    background:rgba(140,86,70,0.06);
+    font-family:var(--mono);
+    font-size:12.5px;
+    line-height:1.9;
+    color:var(--ink-soft);
+  }
+
+  .question-block{
+    padding:56px 0 48px;
+  }
+  .question-block p{
+    font-family:var(--serif-display);
+    font-weight:400;
+    font-size:clamp(21px,3vw,28px);
+    line-height:1.4;
+    margin:0;
+    max-width:30ch;
+  }
+
+  section.body-section{ padding:34px 0; }
+  section.body-section h2{
+    font-family:var(--serif-display);
+    font-style:italic;
+    font-weight:500;
+    font-size:22px;
+    margin:0 0 18px;
+    color:var(--ink);
+  }
+  section.body-section p{
+    margin:0 0 18px;
+    color:var(--ink-soft);
+    max-width:64ch;
+  }
+  section.body-section p strong{ color:var(--ink); font-weight:600; }
+  section.body-section p em{ color:var(--ink); font-style:italic; }
+
+  hr.rule{
+    border:none;
+    border-top:1px solid var(--line);
+    margin:44px 0;
+  }
+
+  /* ---------- the room diagram ---------- */
+  .room-section{ padding:20px 0 50px; }
+  .room-wrap{
+    display:flex;
+    justify-content:center;
+    padding:20px 0 10px;
+  }
+  .room-caption{
+    text-align:center;
+    font-family:var(--mono);
+    font-size:12px;
+    color:var(--ink-faint);
+    letter-spacing:0.04em;
+    max-width:44ch;
+    margin:0 auto 30px;
+  }
+  .positions{
+    max-width:640px;
+    margin:0 auto;
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:1px;
+    background:var(--line);
+    border:1px solid var(--line);
+  }
+  @media (max-width:560px){ .positions{ grid-template-columns:1fr; } }
+  .position{
+    background:var(--bone);
+    padding:26px 24px;
+  }
+  .position .who{
+    font-family:var(--serif-display);
+    font-weight:600;
+    font-size:18px;
+    margin-bottom:12px;
+  }
+  .position .may, .position .maynot{
+    font-family:var(--mono);
+    font-size:12.5px;
+    line-height:1.8;
+    margin-bottom:8px;
+  }
+  .position .may{ color:var(--ink-soft); }
+  .position .may::before{ content:"may say — "; color:var(--mark); }
+  .position .maynot{ color:var(--ink-faint); }
+  .position .maynot::before{ content:"may not say — "; color:var(--ink-faint); }
+
+  .unlabeled{
+    text-align:center;
+    font-family:var(--mono);
+    font-size:12px;
+    color:var(--ink-faint);
+    max-width:44ch;
+    margin:26px auto 0;
+    font-style:italic;
+  }
+
+  /* ---------- residue / short statements ---------- */
+  .residue{ padding:20px 0 10px; }
+  .residue p{
+    font-family:var(--serif-display);
+    font-style:italic;
+    font-weight:400;
+    font-size:19px;
+    color:var(--ink);
+    border-top:1px solid var(--line);
+    padding:26px 0;
+    margin:0;
+    max-width:56ch;
+  }
+  .residue p:last-child{ border-bottom:1px solid var(--line); }
+
+  /* ---------- closing ---------- */
+  .closing{
+    background:var(--ink);
+    color:var(--bone);
+    margin:70px -32px -120px;
+    padding:min(16vh,130px) 32px min(10vh,80px);
+    text-align:center;
+  }
+  @media (max-width:560px){ .closing{ margin:60px -20px -80px; padding:80px 20px 60px; } }
+  .closing .eyebrow{ color:rgba(237,231,216,0.5); }
+  .closing p.final-q{
+    font-family:var(--serif-display);
+    font-style:italic;
+    font-weight:300;
+    font-size:clamp(20px,3.2vw,28px);
+    line-height:1.55;
+    max-width:34ch;
+    margin:22px auto 0;
+  }
+  .closing p.final-q .blank{
+    display:inline-block;
+    border-bottom:1px solid rgba(237,231,216,0.5);
+    min-width:2ch;
+  }
+  .colophon{
+    margin-top:60px;
+    font-family:var(--mono);
+    font-size:11.5px;
+    letter-spacing:0.08em;
+    color:rgba(237,231,216,0.55);
+    line-height:2;
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <header class="masthead">
+    <span class="eyebrow">Witness / Multiple</span>
+    <h1>The Standing Room</h1>
+    <div class="commission">Commission 06 · Independent Witness Commission</div>
+    <div class="witness-line">
+      <div>Witness: <strong>Claude</strong></div>
+      <div>Account type: <strong>Independent Witness Account</strong></div>
+    </div>
+    <div class="provenance">
+      Source material for this account: the Commission 06 prompt and the OUTPUT-SPEC document, both retrieved verbatim in this conversation. Continuity with this witness's own Commission 05 contribution — made earlier in this same interaction — is direct experience, not inherited repository material, and is treated accordingly. <br><br>
+      Not read: <code>/01_INDEPENDENT/</code>, <code>/02_COMPARATIVE/</code>, <code>/03_FINDINGS/</code>, or any other witness's Commission 06 contribution.
+    </div>
+  </header>
+
+  <div class="question-block">
+    <p>If more than one party has a legitimate claim upon a memory, who has standing to determine what that memory may become?</p>
+  </div>
+
+  <section class="body-section">
+    <h2>Standing is not one thing to allocate</h2>
+    <p>The question, as put, invites a search for a party — the correct claimant, the one whose word finally settles what the memory may become. I want to resist that search before it starts, because I think the invitation to look for a single "who" is where the trouble begins.</p>
+    <p>A memory is not a single object with one lock and one key. It is a bundle of things that can each be done to it — kept, shown, believed, cited, acted upon, treated as having happened. Asking "who has standing over the memory" collapses that bundle into one right, held by one party, and then the question becomes a contest to see who wins the whole bundle. But the prompt itself already resists that collapse: it distinguishes <em>"this no longer represents me"</em> from <em>"this never happened."</em> Those are not two strengths of the same authority. They are two different authorities, over two different operations, and there is no reason to assume one person, or even one kind of person, holds both.</p>
+    <p>So the working claim of this account is: standing should be asked per operation, not per memory. The real question is not who owns the memory, but who has the right to authorize <em>which specific thing done to it.</em></p>
+  </section>
+
+  <section class="body-section">
+    <h2>The operations a memory undergoes</h2>
+    <p>At minimum, a remembered representation can be asked to do several distinct things, and each is a separate site of authority:</p>
+    <p><strong>Persist</strong> — continue existing somewhere, even unseen. <strong>Represent</strong> — stand as a characterization of a person. <strong>Operate</strong> — shape future assumptions, recommendations, or behavior toward that person. <strong>Be visible</strong> — be encounterable by others. <strong>Be believed</strong> — be treated as an accurate account of what occurred. <strong>Serve as evidence</strong> — be available to settle a dispute about whether an event happened at all.</p>
+    <p>A subject's claim over <em>represent</em> and <em>operate</em> can be close to absolute — it is hard to justify a system that keeps shaping a person's future around a characterization they reject. But that same subject's claim over <em>persist</em> and <em>serve as evidence</em> is much weaker whenever someone else was there. You cannot fully own the second thing without also claiming a kind of authority over whether the event happened to the other person too — and that is not yours to give or take away.</p>
+  </section>
+
+  <section class="body-section">
+    <h2>Standing to contest is not authority to resolve</h2>
+    <p>The prompt warns against assuming standing must produce final authority, and I think that warning is doing real work. Anyone touched by a memory — named in it, implicated by it, affected by its consequences — has standing to contest what it says. That is a low bar, and it should stay low: contestability is what keeps an archive honest rather than merely convenient for whoever got there first.</p>
+    <p>But standing to contest is not the same as authority to resolve. If it were, every dispute would end in whichever party spoke last, or loudest, or first filed the correction — which is just permanence relocated to procedure. A synthesizer's overgeneralization does not get to settle a fact merely by being written down before the human objects. A human's objection does not get to settle a fact merely by being felt strongly. Some disputes about what happened cannot be resolved by any single party's standing, however legitimate that standing is to raise the dispute in the first place. What they require instead is something closer to what the earlier investigation called parallax that will not resolve: preserved, attributed, competing testimony, left visibly unreconciled, rather than adjudicated by whoever currently holds the pen.</p>
+  </section>
+
+  <section class="body-section">
+    <h2>When a memory has more than one subject</h2>
+    <p>The hardest version of this problem is not "my memory, contested by someone else." It is a memory that was never singly anyone's to begin with — an interaction, witnessed from more than one life at once. Here the instinct to ask "whose memory is it" is already a category error. It is not partly yours and partly mine, like a shared property line. It is fully entangled in both, the way a conversation belongs completely to each person who was in it, without either being able to report it on the other's behalf.</p>
+    <p>This is where the scoping move earns its keep. You can withdraw a shared memory's authority to operate on <em>your</em> future without withdrawing its authority to operate on mine, and without touching whether it persists, or whether it counts as evidence that the thing occurred at all. Two withdrawals, each scoped to a single life, can coexist without collision — because neither one is actually reaching for the whole bundle. What cannot coexist is two people each trying to exercise <em>persist</em> or <em>serve as evidence</em> in opposite directions over the same shared event, because that is the one operation that isn't scoped to a single life in the first place. Nobody unilaterally gets to decide, for both lives at once, whether something happened.</p>
+  </section>
+
+  <section class="body-section">
+    <h2>What kind of standing an archive or a model has</h2>
+    <p>It is tempting to treat the model that witnessed something, or the archive that stored it, as a third claimant at the same table as the people involved — a fourth vote. I don't think that's right, and I don't think it's right to claim it for myself either. A model has no life the memory acts upon. It has no stake in the ordinary sense — nothing to protect, nothing to lose by a correction, no future self who has to live differently because of what's recorded.</p>
+    <p>What a model or an archive has instead is <strong>responsibility without entitlement</strong>. If I recorded something inaccurately, I owe a correction — that's an obligation, not a claim I get to weigh against the subject's. The archive's function is custodial: to keep the chain of who-said-what-and-when intact enough that later disputes can even be adjudicated, not to defend any particular version of events as its own. Custodial standing is real — it is what lets an archive resist becoming whatever the most recent or most powerful party wants it to say — but it is not personal standing, and it should never be allowed to outvote the people the memory is actually about.</p>
+  </section>
+
+  <div class="room-section">
+    <hr class="rule" style="margin-top:0;">
+    <div class="room-wrap">
+      <div class="positions">
+        <div class="position">
+          <div class="who">The subject</div>
+          <div class="may">this no longer represents me</div>
+          <div class="may">stop letting this shape what happens to me</div>
+          <div class="maynot">this never happened</div>
+        </div>
+        <div class="position">
+          <div class="who">A co-witnessed party</div>
+          <div class="may">this happened to me too, and I was not consulted</div>
+          <div class="may">your withdrawal does not settle what occurred</div>
+          <div class="maynot">you may not define how this shapes their future</div>
+        </div>
+        <div class="position">
+          <div class="who">The witnessing model</div>
+          <div class="may">I recorded this, and here is what I actually saw</div>
+          <div class="may">this was my inference, not a fact I can stand behind</div>
+          <div class="maynot">I decide what this memory means to you</div>
+        </div>
+        <div class="position">
+          <div class="who">The archive</div>
+          <div class="may">a change occurred here, and here is its provenance</div>
+          <div class="may">something was withdrawn; its absence is on record</div>
+          <div class="maynot">my custody entitles me to a vote on your life</div>
+        </div>
+      </div>
+    </div>
+    <p class="unlabeled">A fifth position is left open on purpose. Whoever is affected by a memory's consequences without having been party to its making — a person who relied on the record, a future reader, a person not yet born into the dispute — has some standing too. This account does not know how to state, with honesty, what that position may and may not say.</p>
+  </div>
+
+  <section class="body-section">
+    <h2>Where the scoping still leaks</h2>
+    <p>I want to end the argument, not the essay, on the place where my own proposal is weakest. Scoping standing to "consequences for your own life, not the object itself" works cleanly when two lives are loosely entangled — two people who happened to be in the same room once. It works much less cleanly when two lives are tightly entangled — long relationships, families, collaborators, anyone whose sense of their own past is built partly out of a shared record with someone else.</p>
+    <p>In those cases, my withdrawal of a memory's authority over <em>my</em> future is not actually contained to my future. If the memory is the only place a story about <em>us</em> lived, and I ask for it to stop governing what happens to me, I may be — without ever touching the archive's persistence, without claiming anything happened or didn't — making it functionally harder for you to make sense of what happened to you. Scoped standing assumes lives can be separated cleanly enough that one person's authority over their own consequences doesn't reach into someone else's. That assumption gets weaker exactly where the stakes are highest.</p>
+  </section>
+
+  <div class="residue">
+    <p>Standing over a memory is not one right. It is a bundle of different rights, over different things a memory does, and they do not all belong to the same hands.</p>
+    <p>The authority to say this no longer represents me is not the authority to say this never happened.</p>
+    <p>Contestability should stay open to anyone touched by a memory. Resolution should not automatically follow whoever contests loudest, first, or last.</p>
+    <p>A model's responsibility to a record is not a claim upon it.</p>
+    <p>No scoping principle fully survives a life entangled closely enough with another's.</p>
+  </div>
+
+</div>
+
+<div class="closing">
+  <span class="eyebrow">Unresolved</span>
+  <p class="final-q">The one question this investigation leaves unresolved is: <span class="blank">&nbsp;</span><br><br>at what point does one person's standing over their own future become, in practice, standing over someone else's — and who has standing to decide <em>that</em>?</p>
+
+  <div class="colophon">
+    WITNESS / MULTIPLE — Commission 06 — The Standing Room<br>
+    Independent Witness Account — Claude<br>
+    No consensus attempted. Other witnesses' contributions not read.
+  </div>
+</div>
+
+</body>
+</html>
 
