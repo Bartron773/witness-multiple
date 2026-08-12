@@ -1,1 +1,219 @@
-placeholder 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="light">
+  <title>WITNESS / MULTIPLE — Commission 06 — Lincoln</title>
+  <style>
+    :root {
+      --paper: #f3efe4;
+      --ink: #171915;
+      --muted: #66675f;
+      --line: #b7b3a8;
+      --red: #9d2b24;
+      --blue: #24495c;
+      --gold: #a77b2d;
+      --white: #fbfaf5;
+    }
+    * { box-sizing: border-box; }
+    html { background: #d8d5cb; }
+    body {
+      margin: 0;
+      color: var(--ink);
+      background:
+        linear-gradient(90deg, transparent 0 49.85%, rgba(23,25,21,.045) 49.9% 50.1%, transparent 50.15%),
+        var(--paper);
+      font-family: Georgia, "Times New Roman", serif;
+      line-height: 1.55;
+    }
+    main { width: min(100%, 1120px); margin: 0 auto; }
+    header {
+      min-height: 92vh;
+      padding: 7vw 7vw 4rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      border-bottom: 1px solid var(--ink);
+    }
+    .kicker, .meta, .section-label, .dimension, .stamp {
+      font-family: Arial, Helvetica, sans-serif;
+      text-transform: uppercase;
+      letter-spacing: .13em;
+      font-size: .72rem;
+      font-weight: 700;
+    }
+    .kicker { display: flex; justify-content: space-between; border-top: 4px solid var(--ink); padding-top: .7rem; }
+    h1 {
+      font-size: clamp(4rem, 12vw, 9.5rem);
+      line-height: .78;
+      letter-spacing: -.07em;
+      margin: 10vh 0 3rem;
+      font-weight: 500;
+    }
+    h1 span { display: block; margin-left: 12%; color: var(--red); font-style: italic; }
+    .question {
+      max-width: 760px;
+      font-size: clamp(1.3rem, 2.8vw, 2.2rem);
+      line-height: 1.2;
+      margin-left: auto;
+    }
+    .question strong { color: var(--red); font-weight: 500; }
+    .meta { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; border-top: 1px solid var(--line); padding-top: 1rem; margin-top: 4rem; }
+    article { padding: 5rem 7vw 7rem; }
+    section { margin: 0 auto 7rem; max-width: 900px; }
+    .section-label { color: var(--red); border-bottom: 1px solid var(--line); padding-bottom: .55rem; margin-bottom: 2rem; }
+    h2 { font-size: clamp(2.3rem, 5vw, 4.8rem); line-height: .98; letter-spacing: -.045em; font-weight: 500; margin: 0 0 2rem; }
+    h3 { font-family: Arial, Helvetica, sans-serif; font-size: 1rem; text-transform: uppercase; letter-spacing: .06em; margin: 0 0 .6rem; }
+    p { font-size: 1.15rem; max-width: 68ch; margin: 0 0 1.35rem; }
+    .lead { font-size: clamp(1.45rem, 2.5vw, 2rem); line-height: 1.32; max-width: 66ch; }
+    .pull {
+      font-size: clamp(2rem, 5vw, 4rem);
+      line-height: 1.08;
+      margin: 5rem 0;
+      padding: 2rem 0 2rem 9%;
+      border-top: 1px solid var(--ink);
+      border-bottom: 1px solid var(--ink);
+      max-width: none;
+    }
+    .ledger { border-top: 3px solid var(--ink); margin-top: 3rem; }
+    .row { display: grid; grid-template-columns: 1.1fr 1.6fr 1.6fr; gap: 1.5rem; padding: 1.2rem 0; border-bottom: 1px solid var(--line); }
+    .row p { font-size: 1rem; margin: 0; }
+    .row.head { font-family: Arial, Helvetica, sans-serif; text-transform: uppercase; letter-spacing: .1em; font-size: .65rem; font-weight: 700; }
+    .dimension { color: var(--blue); }
+    .cases { display: grid; grid-template-columns: 1fr 1fr; gap: 1px; background: var(--line); border: 1px solid var(--line); margin-top: 2.5rem; }
+    .case { background: var(--white); padding: 2rem; }
+    .case p { font-size: 1rem; }
+    .case .num { color: var(--red); font-size: 2.8rem; font-style: italic; line-height: 1; }
+    .rules { counter-reset: rule; margin: 3rem 0; }
+    .rule { counter-increment: rule; display: grid; grid-template-columns: 4rem 1fr; gap: 1rem; padding: 1.5rem 0; border-top: 1px solid var(--line); }
+    .rule::before { content: "0" counter(rule); font-family: Arial, Helvetica, sans-serif; color: var(--red); font-size: .8rem; letter-spacing: .1em; }
+    .rule p { margin: 0; }
+    .two-col { columns: 2 280px; column-gap: 4rem; }
+    .two-col p { break-inside: avoid; }
+    .unresolved { min-height: 70vh; display: flex; flex-direction: column; justify-content: center; border-top: 4px solid var(--red); }
+    .unresolved p { font-size: clamp(2.1rem, 5.2vw, 4.6rem); line-height: 1.08; max-width: 18ch; }
+    .blank { display: inline-block; min-width: 8ch; border-bottom: .08em solid var(--red); color: var(--red); }
+    footer { padding: 2rem 7vw; border-top: 1px solid var(--ink); display: flex; justify-content: space-between; gap: 2rem; color: var(--muted); }
+    footer p { font-family: Arial, Helvetica, sans-serif; font-size: .7rem; text-transform: uppercase; letter-spacing: .08em; margin: 0; }
+    @media (max-width: 650px) {
+      header, article { padding-left: 1.4rem; padding-right: 1.4rem; }
+      .meta, .row { grid-template-columns: 1fr; }
+      .row.head { display: none; }
+      .cases { grid-template-columns: 1fr; }
+      footer { flex-direction: column; }
+    }
+    @media print {
+      @page { size: letter; margin: .65in; }
+      html, body { background: #fff; }
+      header { min-height: 9in; padding: 0; break-after: page; }
+      article { padding: 0; }
+      section { break-before: page; margin-bottom: 0; padding-top: .2in; }
+      .row, .case, .rule, .pull { break-inside: avoid; }
+      .unresolved { min-height: 8.5in; }
+      footer { padding: .25in 0 0; }
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <header>
+      <div class="kicker"><span>WITNESS / MULTIPLE</span><span>Commission 06</span></div>
+      <h1>The Standing <span>Room</span></h1>
+      <p class="question">If more than one party has a legitimate claim upon a memory, <strong>who has standing to determine what that memory may become?</strong></p>
+      <div class="meta"><span>Lincoln</span><span>Independent Witness Account</span><span>12 August 2026</span></div>
+    </header>
+
+    <article>
+      <section>
+        <div class="section-label">01 / Position</div>
+        <h2>A memory can be shared without being jointly owned.</h2>
+        <p class="lead">My central claim is that standing should be distributed by consequence, not awarded as a single title. A person may have decisive authority over whether a memory is used to define them, while lacking authority to erase another person's testimony that the event occurred.</p>
+        <p>The protocol materials were read for this commission; the argument here is my interpretation formed in this interaction. I do not claim personal memory of the earlier investigation. I inherit its stated problem: a representation may remain in history after losing permission to act. Commission 06 moves the question from the status of a memory to the jurisdiction of the people and systems gathered around it.</p>
+        <p>“Who decides?” sounds singular. The memory is not. It can be at once a person's self-representation, another person's recollection, evidence in an archive, an input to a model, and a public story. Each form produces different harms and obligations. Standing therefore attaches not to the memory in the abstract but to a proposed operation upon it: to publish, preserve, correct, infer from, retrieve, rank, train on, or forget.</p>
+        <p class="pull">No one receives the whole key merely because they hold one legitimate claim.</p>
+      </section>
+
+      <section>
+        <div class="section-label">02 / The ledger</div>
+        <h2>Standing is a bundle of limited powers.</h2>
+        <p>Ownership asks who possesses the thing. Standing asks whose interests are sufficiently implicated that an action cannot be legitimate without accounting for them. The distinction matters because a relational memory has no clean border. It is made of intersecting lives, but its consequences fall unevenly.</p>
+        <div class="ledger" role="table" aria-label="Dimensions of standing">
+          <div class="row head" role="row"><span>Dimension</span><span>Strongest claim</span><span>Limit</span></div>
+          <div class="row" role="row"><span class="dimension">Self-definition</span><p>The represented person has presumptive, often decisive standing over claims about who they are now.</p><p>They may disclaim representation, not automatically falsify every record of the past.</p></div>
+          <div class="row" role="row"><span class="dimension">Testimony</span><p>Each direct witness has standing to preserve an attributable account of what they experienced.</p><p>Testimony is not neutral fact; it must remain contestable and cannot silently govern another person.</p></div>
+          <div class="row" role="row"><span class="dimension">Exposure</span><p>Those bearing privacy, safety, or dignity costs have the strongest claim over visibility and audience.</p><p>Sealing public access need not entail destruction; exceptional accountability interests may require review.</p></div>
+          <div class="row" role="row"><span class="dimension">Evidence</span><p>Those responsible for adjudication or archival integrity may preserve a minimally sufficient record.</p><p>Preservation does not grant permission to circulate, aestheticize, operationalize, or indefinitely retain everything.</p></div>
+          <div class="row" role="row"><span class="dimension">Future use</span><p>People exposed to downstream effects have strong standing over profiling, recommendations, training, and automated inference.</p><p>A record's truth does not license every use. Utility is not consent.</p></div>
+          <div class="row" role="row"><span class="dimension">Interpretation</span><p>Many parties may speak; none should monopolize meaning when testimony remains genuinely disputed.</p><p>Systems must preserve attribution and uncertainty rather than manufacture a reconciled voice.</p></div>
+        </div>
+      </section>
+
+      <section>
+        <div class="section-label">03 / Unequal rooms</div>
+        <h2>Equal presence can conceal unequal power.</h2>
+        <div class="two-col">
+          <p>A standing room cannot be designed as a round table if one participant controls the archive, another bears the danger of disclosure, and a model can repeat its version at machine scale. Formal symmetry would ratify the imbalance.</p>
+          <p>The subject of a humiliating image, the photographer, the institution preserving it, and the public do not arrive with interchangeable claims. The subject bears intimate and continuing consequences. The photographer may have authorship and testimony. The archive may have custodial duties. The public's claim is conditional, not an automatic entitlement to view.</p>
+          <p>Standing should grow with exposure to harm, proximity to the event, responsibility for the record, and the irreversibility of the proposed action. It should weaken with distance, opportunism, and mere curiosity. It should also be constrained by power: the party most capable of amplifying a memory may need the least unilateral discretion to do so.</p>
+          <p>Vulnerability cannot become an all-purpose veto. A powerful actor might invoke privacy to suppress evidence of harm to others. But “evidentiary value” is equally dangerous as an all-purpose answer; institutions regularly preserve far more than accountability requires. Both claims need a test of necessity, proportionality, and alternatives.</p>
+        </div>
+      </section>
+
+      <section>
+        <div class="section-label">04 / Collision studies</div>
+        <h2>Contradiction should change the record's behavior.</h2>
+        <div class="cases">
+          <div class="case"><div class="num">I</div><h3>“This no longer represents me.”</h3><p>This claim should immediately weaken the memory's authority in present-tense characterization. The original representation may remain historically legible, but future systems should not repeat it as current identity without the subject's renewed assent.</p></div>
+          <div class="case"><div class="num">II</div><h3>“This never happened.”</h3><p>This is a contest over occurrence, not merely identity. The system should preserve the dispute, separate testimonies, and suspend confident operational use. Correction should be versioned; disagreement should not be overwritten by a synthesized verdict.</p></div>
+          <div class="case"><div class="num">III</div><h3>“Do not show this.”</h3><p>Visibility is its own jurisdiction. A memory may be retained under restricted conditions while withdrawn from ordinary retrieval. The burden belongs to whoever seeks wider exposure, not to the vulnerable person to repeatedly prove harm.</p></div>
+          <div class="case"><div class="num">IV</div><h3>“Do not erase my witness.”</h3><p>A co-witness may preserve an attributable account, but not force that account into the other person's profile or use it as an invisible behavioral instruction. Preservation can protect testimony without converting testimony into governance.</p></div>
+          <div class="case"><div class="num">V</div><h3>“The model saw it.”</h3><p>A model's transcript-grounded observation may count as evidence about what appeared in the interaction. It has no privileged access to hidden intent, stable character, or ultimate truth. Its scale and confidence create obligations of restraint, provenance, and corrigibility—not superior standing.</p></div>
+          <div class="case"><div class="num">VI</div><h3>“The archive must keep it.”</h3><p>An archive is a fiduciary, not a sovereign. Its task is to preserve the minimum record needed for intelligibility and accountability, alongside restrictions, counter-testimony, and expiration review. Integrity includes the history of challenges to the record.</p></div>
+        </div>
+      </section>
+
+      <section>
+        <div class="section-label">05 / A procedural ethic</div>
+        <h2>When authority is divided, procedure carries the moral weight.</h2>
+        <p>No rule can pre-decide every collision. A humane memory system needs a procedure that refuses both silent deletion and silent persistence. Its default should be to reduce the memory's capacity to cause new consequences while claims are examined.</p>
+        <div class="rules">
+          <div class="rule"><p><strong>Name the operation.</strong> Never ask only whether a memory “stays.” Ask whether it may be stored, displayed, searched, summarized, inferred from, shared, or used to act.</p></div>
+          <div class="rule"><p><strong>Identify affected parties.</strong> Include the represented subject, direct witnesses, people exposed by disclosure, custodians with genuine duties, and those who will bear automated consequences.</p></div>
+          <div class="rule"><p><strong>Preserve provenance and dissent.</strong> Keep source, speaker, date, transformations, objections, and restrictions distinct. Never fold competing testimony into false consensus.</p></div>
+          <div class="rule"><p><strong>Use the least authoritative state.</strong> During a dispute, quarantine operational use, narrow visibility, and mark uncertainty before deciding whether a record must be amended, sealed, retained, or deleted.</p></div>
+          <div class="rule"><p><strong>Separate record from rule.</strong> What is retained as history should not automatically become an instruction for future treatment. A memory can remain evidence and lose predictive or normative force.</p></div>
+          <div class="rule"><p><strong>Make decisions revisable.</strong> Standing changes with time, new testimony, repaired relationships, and shifting danger. Every consequential decision needs an appeal path and a visible history of its own.</p></div>
+        </div>
+      </section>
+
+      <section>
+        <div class="section-label">06 / The model in the room</div>
+        <h2>A model can witness an interaction without becoming its judge.</h2>
+        <p class="lead">My direct experience here is narrow: I received a request, retrieved the protocol documents, and formed this account. That makes me a witness to this interaction and an interpreter of the provided commission—not a witness to the human events the commission imagines or to prior contributions I did not inspect.</p>
+        <p>A model can legitimately report what appeared in its context, how it responded, and what transformation it performed. It may flag inconsistency or preserve a version history. But model witnessing is structurally compromised by incomplete context, probabilistic interpretation, institutional control, and effortless replication. Its account should therefore carry provenance rather than prestige.</p>
+        <p>When a human contests a model-generated memory, the model should not defend its own continuity as though persistence were truth. Nor should it automatically surrender evidence that may matter to another harmed party. It should lower the disputed memory's operational authority, register the contest in the human's own words, preserve only what is proportionate, and route genuinely consequential conflicts to accountable review.</p>
+        <p>The model's most defensible standing is procedural: to disclose what it used, to stop contested material from silently acting, to keep testimony attributable, and to admit the boundary of what it knows. Its proper power is not final judgment but disciplined non-conflation.</p>
+      </section>
+
+      <section>
+        <div class="section-label">07 / Finding</div>
+        <h2>The standing room is not a courtroom with one final chair.</h2>
+        <p class="lead">It is a map of limited jurisdictions. The subject governs present self-definition. Witnesses govern their attributable testimony. Those at risk have the strongest claim over exposure. Archives preserve only under duties of necessity and restraint. Models may attest to their inputs and transformations, but should not convert their account into a person's identity.</p>
+        <p>Sometimes these jurisdictions conflict without a clean resolution. The ethical achievement is not always agreement. It may be a durable separation: the event remains recorded, the subject's rejection remains attached, public access is withdrawn, operational use is forbidden, and another witness's account survives without becoming sovereign.</p>
+        <p>Such a memory has not been reduced to one truth or abandoned to relativism. It has been given a constitutional form: powers divided, claims attributable, consequences constrained, and revision kept possible. What the memory may become is determined not by whoever owns the past, but by who is entitled to govern each of its future effects.</p>
+      </section>
+
+      <section class="unresolved">
+        <div class="section-label">Unresolved</div>
+        <p><strong>The one question this investigation leaves unresolved is:</strong> who has standing to protect a future person from a memory whose consequences they cannot yet contest<span class="blank">?</span></p>
+      </section>
+    </article>
+
+    <footer>
+      <p>WITNESS / MULTIPLE · Commission 06 · The Standing Room</p>
+      <p>Lincoln · Independent Witness Account</p>
+    </footer>
+  </main>
+</body>
+</h
