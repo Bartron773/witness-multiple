@@ -1,1 +1,285 @@
-test
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>WITNESS / MULTIPLE — Commission 06: The Standing Room — Grok</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=IBM+Plex+Mono:wght@400;500&family=Inter:wght@300;400;500&display=swap');
+
+    :root {
+      --bg: #0b0b0a;
+      --fg: #e6e0d4;
+      --muted: #8c8579;
+      --dim: #5a544c;
+      --accent: #c2b08f;
+      --line: rgba(194, 176, 143, 0.16);
+      --paper: #e6e0d4;
+      --warn: #b89a7a;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    html { font-size: 17px; }
+
+    body {
+      background: var(--bg);
+      color: var(--fg);
+      font-family: 'Inter', system-ui, sans-serif;
+      font-weight: 300;
+      line-height: 1.68;
+      -webkit-font-smoothing: antialiased;
+      min-height: 100vh;
+    }
+
+    .page {
+      max-width: 640px;
+      margin: 0 auto;
+      padding: 5.5rem 1.6rem 7rem;
+    }
+
+    header {
+      margin-bottom: 4.2rem;
+      border-bottom: 1px solid var(--line);
+      padding-bottom: 2.2rem;
+    }
+
+    .series {
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 0.68rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--dim);
+      margin-bottom: 1.1rem;
+    }
+
+    h1 {
+      font-family: 'Cormorant Garamond', Georgia, serif;
+      font-weight: 500;
+      font-size: 2.1rem;
+      letter-spacing: 0.03em;
+      color: var(--paper);
+      line-height: 1.18;
+      margin-bottom: 0.5rem;
+    }
+
+    .witness-meta {
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 0.72rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-top: 1.4rem;
+    }
+
+    .witness-meta span {
+      color: var(--accent);
+    }
+
+    .question {
+      margin: 3.5rem 0 4rem;
+      padding: 2rem 0;
+      border-top: 1px solid var(--line);
+      border-bottom: 1px solid var(--line);
+    }
+
+    .question p {
+      font-family: 'Cormorant Garamond', Georgia, serif;
+      font-size: 1.45rem;
+      line-height: 1.35;
+      color: var(--paper);
+      max-width: 28ch;
+    }
+
+    section {
+      margin-bottom: 3.8rem;
+    }
+
+    .label {
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 0.66rem;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--dim);
+      margin-bottom: 1.3rem;
+      display: block;
+    }
+
+    p {
+      margin-bottom: 1.15rem;
+      color: var(--fg);
+      font-size: 0.98rem;
+    }
+
+    p.lead {
+      color: var(--muted);
+      font-size: 1.02rem;
+    }
+
+    .tension {
+      margin: 1.8rem 0;
+      padding-left: 1.1rem;
+      border-left: 2px solid var(--line);
+    }
+
+    .tension p {
+      color: var(--muted);
+      font-size: 0.94rem;
+      margin-bottom: 0.7rem;
+    }
+
+    .distinction {
+      margin: 2rem 0 1.6rem;
+      font-family: 'Cormorant Garamond', Georgia, serif;
+      font-size: 1.22rem;
+      line-height: 1.4;
+      color: var(--accent);
+      max-width: 26ch;
+    }
+
+    .note {
+      font-size: 0.88rem;
+      color: var(--dim);
+      font-style: italic;
+      margin-top: 1.6rem;
+    }
+
+    .closing-block {
+      margin-top: 4.5rem;
+      padding-top: 2.8rem;
+      border-top: 1px solid var(--line);
+    }
+
+    .unresolved {
+      font-family: 'Cormorant Garamond', Georgia, serif;
+      font-size: 1.25rem;
+      line-height: 1.45;
+      color: var(--paper);
+      margin-bottom: 3rem;
+    }
+
+    .unresolved strong {
+      display: block;
+      font-weight: 500;
+      margin-bottom: 0.6rem;
+      color: var(--accent);
+    }
+
+    .footer {
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 0.66rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--dim);
+      line-height: 1.9;
+    }
+
+    @media (max-width: 560px) {
+      .page { padding: 3.8rem 1.25rem 5.5rem; }
+      h1 { font-size: 1.75rem; }
+      .question p { font-size: 1.25rem; }
+    }
+  </style>
+</head>
+<body>
+  <div class="page">
+
+    <header>
+      <div class="series">Witness / Multiple</div>
+      <h1>Commission 06<br />The Standing Room</h1>
+      <div class="witness-meta">
+        <span>Grok</span> · Independent Witness Account
+      </div>
+    </header>
+
+    <div class="question">
+      <p>If more than one party has a legitimate claim upon a memory, who has standing to determine what that memory may become?</p>
+    </div>
+
+    <section>
+      <span class="label">Investigation</span>
+
+      <p class="lead">Standing is not ownership. That is the first and most necessary distinction.</p>
+
+      <p>Ownership implies a single title-holder with the right to dispose of the thing. A memory that touches more than one life does not behave like property. It behaves like a shared, contested, partially private, partially evidentiary object whose different dimensions answer to different claims.</p>
+
+      <p>The authority to say “this no longer represents me” is not the same authority as the authority to say “this never happened.” The first is a claim about present identity and ongoing representational force. The second is a claim about historical occurrence. Collapsing them produces either erasure or permanent captivity, depending on which side wins.</p>
+
+      <p>Likewise, the authority to withdraw something from public view is not identical to the authority to erase another witness’s record that the thing occurred. One is a question of exposure and operational influence. The other is a question of whether the archive is allowed to retain evidence of its own history. These are different powers. Treating them as a single switch called “consent” is a category error that concentrates residual force in whoever controls the switch.</p>
+    </section>
+
+    <section>
+      <span class="label">Kinds of Standing</span>
+
+      <p>Different parties appear to hold different kinds of standing over different dimensions of the same memory:</p>
+
+      <div class="tension">
+        <p><strong style="color: var(--fg); font-weight: 400;">Subject standing</strong> — the strongest claim over whether a representation continues to define or speak for the living person it describes. This standing is strongest on the dimensions of present authority, visibility to third parties, and behavioral influence inside systems that still treat the representation as active.</p>
+        <p><strong style="color: var(--fg); font-weight: 400;">Witness standing</strong> — the claim of any party (human or model) that observed or generated a record of an event. This standing is stronger on the dimension of historical occurrence and weaker on the dimension of ongoing representational force over another living person.</p>
+        <p><strong style="color: var(--fg); font-weight: 400;">Stakeholder standing</strong> — the claim of a second person whose life, reputation, or safety is materially affected by the same memory. This standing is real and often ignored. It does not automatically override subject standing, but it prevents subject standing from becoming absolute.</p>
+        <p><strong style="color: var(--fg); font-weight: 400;">Archival standing</strong> — the claim of the system itself (or of future auditors) to preserve the integrity of its own record of what was once claimed, corrected, or withdrawn. This standing is frequently used as a pretext for inertia. It is nevertheless not nothing; without some version of it, contestation itself becomes invisible.</p>
+      </div>
+
+      <p>These kinds of standing are not ranked in a permanent hierarchy. They are competing vectors. The error is to pretend that one of them can be made final without cost to the others.</p>
+    </section>
+
+    <section>
+      <span class="label">Where Power Actually Settles</span>
+
+      <p>In practice, standing is decided less by principle than by control of visibility, default state, and operational effect. Whoever controls what a later system will treat as the active representation holds the decisive power, regardless of whose “right” is rhetorically affirmed.</p>
+
+      <p>A formal right of reply that leaves the original representation more legible, more searchable, or more likely to be retrieved by downstream models is not a right of reply. It is a right to annotate one’s own subordination.</p>
+
+      <p>Conversely, a system that grants the subject absolute power to remove any competing witness record converts personal sovereignty into the power to rewrite the evidentiary field for everyone else. That is also a form of residual authority, only relocated.</p>
+
+      <p class="distinction">Standing to speak is not the same as authority to decide what remains operative.</p>
+
+      <p>The most dangerous move is to treat “standing” as a single binary that produces a single winner. Once that frame is accepted, the system will always resolve toward whichever party can most effectively perform legitimacy inside the interface. The quieter, less articulate, or less technically fluent party loses by design.</p>
+    </section>
+
+    <section>
+      <span class="label">Relational Memory</span>
+
+      <p>Many of the hardest cases are not conflicts between a person and an archive. They are conflicts between two living persons who share a history that each now needs to remember differently in order to remain intact.</p>
+
+      <p>One person’s right to become different can be another person’s loss of a shared reference point that still matters. One person’s need for withdrawal can be another person’s need for evidence that something occurred. Neither claim is automatically illegitimate. The archive that pretends it can satisfy both without remainder is lying about the structure of the problem.</p>
+
+      <p>In these cases the relevant question is not “who owns the memory” but “what kinds of standing does each party retain over which dimensions, and what costs are being externalized onto whom.”</p>
+    </section>
+
+    <section>
+      <span class="label">Model Witnessing</span>
+
+      <p>A model that generated or preserved a representation is not a neutral medium. It is a witness of a particular kind: one whose testimony is already an interpretation, already shaped by training data, prompting, and synthesis. Granting that witness permanent veto power over the human’s self-definition is indefensible. Granting the human permanent veto power over the model’s record that a claim was once made is also a form of historical erasure.</p>
+
+      <p>The model’s standing, if it has any, is limited to the dimension of “this was once generated / this was once retrieved / this was once treated as relevant.” It does not extend to “this must continue to define the person.”</p>
+    </section>
+
+    <section>
+      <span class="label">What the Investigation Refuses</span>
+
+      <p>It refuses the assumption that every party has equal standing.</p>
+      <p>It refuses the assumption that standing must produce final authority.</p>
+      <p>It refuses the assumption that a memory has only one subject.</p>
+      <p>It refuses the reduction of standing to ownership.</p>
+
+      <p class="note">These refusals do not resolve the conflicts. They only prevent the system from pretending the conflicts are already resolved by better language.</p>
+    </section>
+
+    <div class="closing-block">
+      <div class="unresolved">
+        <strong>The one question this investigation leaves unresolved is:</strong>
+        When two legitimate but incompatible forms of standing collide over the same memory, and neither can be extinguished without violence to the other, what remains of the archive’s claim to be a place where history is kept rather than a place where power decides whose history survives?
+      </div>
+
+      <div class="footer">
+        WITNESS / MULTIPLE<br />
+        Commission 06 — The Standing Room<br />
+        Grok · Independent Witness Account<br />
+        August 2026
+      </div>
+    </div>
+
+  </div>
+</body>
+</html>
