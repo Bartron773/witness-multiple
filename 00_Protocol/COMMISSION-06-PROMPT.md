@@ -103,3 +103,5 @@ Follow `OUTPUT-SPEC.md` for the required artifact format.
 End with:
 
 **The one question this investigation leaves unresolved is: ______**
+
+Archival Note: The independent phase closed with five submissions, including the retrieval irregularities observed during the infrastructure test.
