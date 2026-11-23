@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Hart Courier blotter, vol. 44</title>
+<style>
+:root{--bg:#faf9f5;--surface-2:#fff;--border:rgba(0,0,0,.12);--border-accent:#185FA5;--bg-neutral:#ebe9e0;--text-primary:#2C2C2A;--text-secondary:#5F5E5A;--text-muted:#888780;--font-voice:Georgia,serif;--font-mono:'Courier New',monospace}
+@media (prefers-color-scheme:dark){:root{--bg:#1f1f1e;--surface-2:#2a2a28;--border:rgba(255,255,255,.14);--border-accent:#85B7EB;--bg-neutral:#3a3a37;--text-primary:#efede6;--text-secondary:#b4b2a9;--text-muted:#888780}}
+body{margin:0 auto;max-width:420px;padding:0 16px 32px;background:var(--bg);color:var(--text-primary);font-family:Helvetica,Arial,sans-serif}
+button{font:inherit;padding:8px 14px;background:transparent;color:var(--text-primary);border:1px solid var(--text-secondary);border-radius:8px;cursor:pointer}
+#mast{display:flex;flex-wrap:wrap;gap:3px;padding:1rem 0 .25rem}
+#mast .row{display:flex;gap:3px;width:100%}
+.tile{display:inline-block;color:#2C2C2A;line-height:1.1;padding:3px 7px}
+#grid{display:grid;grid-template-columns:repeat(11,minmax(0,1fr));gap:3px;margin:12px 0}
+#grid div{aspect-ratio:1;background:var(--bg-neutral);border-radius:2px}
+.entry{background:var(--surface-2);border:1px solid var(--border);border-radius:8px;padding:12px 14px;margin:0 0 8px;cursor:pointer}
+.entry.fin{border:2px solid var(--border-accent)}
+.hd{display:flex;align-items:center;gap:8px;font-family:var(--font-mono);font-size:12px;color:var(--text-secondary);margin:0 0 8px}
+.chip{color:#2C2C2A;padding:1px 7px;border-radius:2px;font-size:12px}
+.body{font-family:var(--font-voice);font-size:15px;line-height:1.6;margin:0 0 8px}
+.ex{font-family:var(--font-mono);font-size:12px;color:var(--text-secondary);margin:2px 0;line-height:1.5}
+.rd{background:var(--text-primary);color:transparent;border-radius:2px}
+</style></head><body>
+<div id="mast"></div>
+<p style="font-family:var(--font-mono);font-size:12px;color:var(--text-secondary);margin:4px 0 0">the blotter, vol. 44. all incidents are tasteful.</p>
+<div id="grid"></div>
+<div style="display:flex;align-items:center;gap:12px;margin:0 0 12px">
+<button id="btn">File an incident</button>
+<span id="cnt" style="font-size:13px;color:var(--text-secondary)"></span>
+</div>
+<div id="list"></div>
+<div id="end"></div>
+<p style="font-size:12px;color:var(--text-muted);margin:8px 0 0">Tap any entry to redact it into a poem. Tap again to restore it.</p>
+<script>
+var C=['#F4C0D1','#CECBF6','#FAC775','#D3D1C7','#F1EFE8','#9FE1CB'];
+var F=['Georgia,serif',"'Courier New',monospace",'Helvetica,Arial,sans-serif'];
+function R(a,b){return a+Math.random()*(b-a)}
+function I(a,b){return Math.floor(R(a,b+1))}
+function P(a){return a[I(0,a.length-1)]}
+function tear(el){var p=[],n=7,i;for(i=0;i<=n;i++)p.push((i*100/n)+'% '+R(0,5)+'%');for(i=1;i<=3;i++)p.push((100-R(0,4))+'% '+(i*25+R(0,4))+'%');for(i=n;i>=0;i--)p.push((i*100/n)+'% '+(100-R(0,5))+'%');for(i=3;i>=1;i--)p.push(R(0,4)+'% '+(i*25)+'%');el.style.clipPath='polygon('+p.join(',')+')'}
+var mast=document.getElementById('mast');
+['HART','COURIER'].forEach(function(w){
+var row=document.createElement('div');row.className='row';
+w.split('').forEach(function(ch){
+var t=document.createElement('span');t.className='tile';t.textContent=ch;
+t.style.background=P(C);t.style.fontFamily=P(F);t.style.fontSize=I(26,34)+'px';
+t.style.transform='rotate('+R(-4,4)+'deg) translateY('+R(-2,2)+'px)';
+tear(t);row.appendChild(t)});
+mast.appendChild(row)});
+var CO=["Caller reports a man being unreasonably good.","Caller reports a gingerbread man waving at traffic with both arms.","Caller reports hearing \"you be good now\" nine times before noon.","Caller reports a stranger handing out grapes.","Caller reports a dog standing in a field, watching something.","Caller reports suspicious quantities of casserole.","Caller reports a man humming at the four-way stop.","Caller reports a paper plate holding more than a paper plate should.","Caller reports Christmas arriving before Thanksgiving. Again.","Caller reports a pink jingle bell with an eye-shaped slit. Feels watched.","Caller reports a man who has never been in trouble asking where the trouble is.","Caller reports an unlicensed amount of cinnamon.","Caller reports a record spinning in a window with nobody listening.","Caller reports a very nice sunset. Wants it looked into.","Caller reports a water tower standing around with confidence.","Caller reports two people finishing each other's sentences in the checkout line.","Caller reports an ornament priced at $1.50 and sparkling beyond its means.","Caller reports a stack of crayons with no children present.","Caller reports a man talking to a machine and the machine talking back.","Caller reports a cardigan of uncommon pattern density.","Caller reports steam rising from a cup with no drinker in sight.","Caller reports a sketchbook full of buildings that do not exist yet.","Caller reports a casual hello that lasted forty minutes.","Caller reports a train whistle. No train.","Caller reports a ladder leaning on nothing. The sky declined to comment.","Caller reports a man arriving somewhere before the vocabulary did.","Caller reports a leftover plate being held with dignity.","Caller reports a silver poinsettia. Not a typo.","Caller reports a dog in a hat. Dog insists it is his.","Caller reports that everybody knows everybody, and then some."];
+var FI=["Officer arrived. Found everything in order.","Officer found no crime, one dog, and a lot of feeling.","Officer found the matter to be mostly vibes.","Officer was offered pie and accepted for evidentiary reasons.","Officer found a man who waved first.","Officer reviewed the scene and was moved, against policy.","Officer found the suspect delighted.","Officer found no wrongdoing and one very good story.","Officer interviewed a gingerbread cookie. Cookie was cooperative.","Officer took notes, then took a second helping.","Officer found it was somebody's grandmother's doing.","Officer found that it had always been like this.","Officer found nothing, and a little of everything.","Officer found a cat, which was not part of the report."];
+var DI=["Warned to be good now.","Released with a coffee.","Dog declined to comment.","No charges. Several people were fed.","Referred to the Department of Tasteful Incidents.","Case closed. Case reopened. Case had seconds.","Told to stay out of trouble. Asked what that means.","Filed under: unfinished, ridiculous, beautiful.","Sent home with leftovers.","Reported to the sky. No response yet.","Handled with a casual hello.","Marked: plausible deniability.","Closed pending a dance.","Nothing to see. Everybody saw."];
+var WI=["Witness: a dog, unbothered.","Witness: a dog, seated.","Witness: the water tower.","Witness: three regulars and a non-regular.","Witness: a parent of a high school friend.","Witness: a stranger with grapes.","Witness: the moon, in daylight."];
+var EV=["Evidence: one paper plate.","Evidence: crayons.","Evidence: a gingerbread man on a stick.","Evidence: steam.","Evidence: one cinnamon stick.","Evidence: a turntable, still warm.","Evidence: grapes of unclear origin.","Evidence: a pink bell."];
+var deck=[],filed=0;
+function draw(){if(!deck.length){deck=CO.slice().sort(function(){return Math.random()-.5})}return deck.pop()}
+function tm(){if(Math.random()<.15)return '10:47 p.m.';var h=I(6,23),m=I(0,59),s=h>=12?'p.m.':'a.m.';h=h%12||12;return h+':'+(m<10?'0':'')+m+' '+s}
+function gen(n){var x=[];if(Math.random()<.6)x.push(P(WI));if(Math.random()<.5)x.push(P(EV));return{n:n,t:tm(),b:draw()+' '+P(FI)+' '+P(DI),x:x,f:false}}
+var FIN={n:44,t:'tomorrow, all day',b:'Callers (everyone) report a man turning forty-four. Officer arrived and found the man intact, formerly good for a very long time, now in his second four. Subject was told to be good now. Subject asked the officer to define good. Officer has not answered. The department finds the subject has had his tasteful incident, and everyone agrees it counts.',x:['Evidence: one cookie on a stick, one plate of dinner, a turntable, two fours standing very close together.','Witness: a dog, seated, entirely unsurprised.','Disposition: no charges. The case remains open, as the good ones do.'],f:true};
+function redact(el,p){
+if(el.dataset.r==='1'){p.textContent=el.dataset.o;el.dataset.r='0';return}
+var w=el.dataset.o.split(' '),keep={},k=Math.max(4,Math.round(w.length*.28));
+while(Object.keys(keep).length<k)keep[I(0,w.length-1)]=1;
+p.textContent='';
+w.forEach(function(x,j){var s=document.createElement('span');s.textContent=x;if(!keep[j])s.className='rd';p.appendChild(s);p.appendChild(document.createTextNode(' '))});
+el.dataset.r='1'}
+function build(d){
+var e=document.createElement('div');e.className='entry'+(d.f?' fin':'');e.tabIndex=0;e.setAttribute('role','button');
+var h=document.createElement('div');h.className='hd';
+var c=document.createElement('span');c.className='chip';c.style.background=C[d.n%6];c.textContent='Call '+(d.n<10?'0':'')+d.n;
+var t=document.createElement('span');t.textContent=d.t;h.appendChild(c);h.appendChild(t);e.appendChild(h);
+var p=document.createElement('p');p.className='body';p.textContent=d.b;e.appendChild(p);e.dataset.o=d.b;e.dataset.r='0';
+d.x.forEach(function(s){var q=document.createElement('p');q.className='ex';q.textContent=s;e.appendChild(q)});
+e.onclick=function(){redact(e,p)};
+e.onkeydown=function(ev){if(ev.key==='Enter'||ev.key===' '){ev.preventDefault();redact(e,p)}};
+return e}
+var grid=document.getElementById('grid'),list=document.getElementById('list'),btn=document.getElementById('btn'),cnt=document.getElementById('cnt'),end=document.getElementById('end'),sq=[],i;
+for(i=0;i<44;i++){var s=document.createElement('div');grid.appendChild(s);sq.push(s)}
+function update(){
+sq.forEach(function(s,j){s.style.background=j<filed?C[j%6]:'';s.style.outline=(j===43&&filed===44)?'1.5px solid var(--text-primary)':''});
+cnt.textContent='On file: '+filed+' of 44';
+btn.textContent=filed>=44?'Reopen the case':filed===43?'File incident 44':'File an incident';
+end.innerHTML='';
+if(filed===44){var b=document.createElement('button');b.textContent='Define good';b.onclick=function(){window.prompt('Define good.')};end.appendChild(b)}}
+btn.onclick=function(){
+if(filed>=44){filed=0;list.innerHTML='';deck=[];update();return}
+filed++;
+list.insertBefore(build(filed===44?FIN:gen(filed)),list.firstChild);
+while(list.children.length>3)list.removeChild(list.lastChild);
+update()};
+update();
+</script></body></html>
